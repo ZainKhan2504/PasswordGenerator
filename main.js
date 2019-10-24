@@ -53,6 +53,21 @@ function generatePassword(lower, upper, number, symbol, length) {
     return finalPassword;
 }
 
+// Copy password to clipboard
+clipboardEl.addEventListener('click', () => {
+    const textarea = document.createElement('textarea');
+    const password = resultEl.innerText;
+    if (!password) {
+        return;
+    }
+    textarea.value = password;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+    alert('Password Copied to clipboard');
+});
+
 // Generator function - http://www.net-comber.com/charset.html
 
 function getRandomLower() {
